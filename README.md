@@ -361,42 +361,70 @@ Expected output:
 
 # Recommended Execution Order
 
-For full reproducibility of the thesis workflow:
+For full reproducibility of the thesis workflow, the calibration stage should be performed first.
 
-## Step 1 — Estimate First-Order Chain
-
-```bash
-python markov_first_order_pydtmc.py
-```
-
-## Step 2 — Estimate Second-Order Chain
-
-```bash
-python markov_second_order_pydtmc.py
-```
-
-## Step 3 — Perform Order Selection Tests
-
-```bash
-python markov_order_tests.py
-```
-
-## Step 4 — Run S&P 500 Integration
-
-```bash
-python markov_sp500_integration.py
-```
-
-## Step 5 — Run Parameter Optimization
+## Step 1 — Run Gridsearch Against NBER
 
 ```bash
 python gridsearch.py
 ```
 
-## Step 6 — Run Walk-Forward Evaluation
+Purpose:
+
+- calibrates the deterministic classification rule
+- optimizes thresholds against NBER recession chronology
+- determines the final parameter configuration used throughout the thesis
+
+Main calibrated parameters:
+
+- industrial production threshold
+- inflation threshold
+- hysteresis buffer
+- lag parameter
+
+The finalized parameter values used in the thesis are:
+
+```text
+θ_i = -0.26
+c_b = 0.32
+τ = 1
+θ_c = 0.0
+```
+
+## Step 2 — Run Walk-Forward Validation
 
 ```bash
 python walkforward.py
+```
+
+Purpose:
+
+- validates parameter robustness out-of-sample
+- evaluates recession classification stability
+- compares against NBER chronology in a rolling expanding-window framework
+
+## Step 3 — Estimate First-Order Chain
+
+```bash
+python markov_first_order_pydtmc.py
+```
+
+## Step 4 — Estimate Second-Order Chain
+
+```bash
+python markov_second_order_pydtmc.py
+```
+
+## Step 5 — Perform Order Selection Tests
+
+```bash
+python markov_order_tests.py
+```
+
+## Step 6 — Run S&P 500 Integration
+
+```bash
+python markov_sp500_integration.py
 ```
 
 ## Step 7 — Run OOS Prediction Comparison
