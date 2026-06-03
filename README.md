@@ -14,7 +14,7 @@ The project constructs a deterministic four-state U.S. business-cycle chronology
 
 # Quick Start — Exact Reproduction Steps
 
-> This section was verified end-to-end on a clean checkout. Follow it in order and every number in **Main Empirical Findings** reproduces. It documents three small setup steps that are easy to miss; the rest of the README gives per-script detail.
+> This section was verified end-to-end on a clean checkout. Follow it in order to reproduce the thesis results. It documents three small setup steps that are easy to miss; the rest of the README gives per-script detail.
 
 ## 0. Environment
 
@@ -91,7 +91,7 @@ python "prediction test.py"
 | Calibration best-F1 parameters | θ_i = −0.26, c_b = 0.32, τ = 1 (in-sample F1 ≈ 0.71) |
 | First-order: Expansion persistence / π(Expansion) / duration | ≈ 0.92 / ≈ 0.785 / ≈ 12.5 months; chain ergodic |
 | Second-order: Exp-after-Exp / Exp-after-Contraction duration | ≈ 13.4 months / ≈ 2 months (Jeffreys-smoothed) |
-| Order selection | LRT rejects first-order null (α = 0.05 and 0.01); ΔBIC ≈ −207 favors first-order |
+| Order selection | LRT rejects first-order null; ΔBIC ≈ −207 favors first-order |
 | Walk-forward pooled OOS | F1 ≈ 0.64, recall ≈ 0.74, precision ≈ 0.56, accuracy ≈ 0.90 |
 | S&P by-regime Sharpe | Recovery highest (≈ 1.68) |
 | S&P strategies | Markov Weighted max drawdown ≈ −0.37 vs buy-and-hold ≈ −0.70 |
